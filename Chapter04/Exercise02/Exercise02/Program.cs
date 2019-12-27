@@ -1,22 +1,72 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Exercise02
 {
     class Program
     {
         //come back to this; do sieve of eratosthenes https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-        static int PrimeFactor(int userInput)
+        static bool[] PrimeFactor(int userInput)
         {
-            int prime;
-            int divisionOfInput = userInput;
-            int primeTest;
-            do
-            {
-                divisionOfInput = (userInput / 2);
-            }
-            while ((divisionOfInput % 2) != 0);
+            //Create my array that will be userInput long, defaults to false.
+            bool[] eratosthenes = new bool[userInput];
+            Debug.WriteLine($"The array is: {eratosthenes.Length}"); //output to the debug
+            int j = 0;
+            List<int> primes = new List<int>();
 
-            return prime;
+            for (int i = 0; i < Math.Sqrt(userInput); i++)
+            {
+                if (i < 1)
+                {
+                    Debug.WriteLine("Loop < 1");
+                    continue;
+                }
+                else if (i == 2)
+                {
+                    Debug.WriteLine("===LOOP 2===");
+                    Debug.WriteLine($"{i}^2");
+                    j = Convert.ToInt32(Math.Pow(i, 2));
+                    Debug.WriteLine($"{j}");
+                    Debug.WriteLine($"{i}");
+                    primes.Add((int)j);
+                    eratosthenes[j] = true;
+                    Debug.WriteLine("============");
+                }
+                else if (i == 3)
+                {
+                    Debug.WriteLine("===LOOP 3===");
+                    Debug.WriteLine($"{i}^2 + {i}");
+                    j = Convert.ToInt32(Math.Pow(i, 2)) + i;
+                    Debug.WriteLine($"{j}");
+                    Debug.WriteLine($"{i}");
+                    primes.Add((int)j);
+                    eratosthenes[j] = true;
+                    Debug.WriteLine("============");
+                }
+                else if ((bool)eratosthenes.GetValue(i) == false && i >= 4)
+                {
+                    Debug.WriteLine($"===LOOP {i}===");
+                    j = Convert.ToInt32(Math.Pow(i, 2)) + (i * i);
+                    Debug.WriteLine($"{j}");
+                    Debug.WriteLine($"{i}");
+                    primes.Add((int)j);
+                    eratosthenes[j] = true;
+                    Debug.WriteLine("============");
+                }
+                else
+                {
+                    Debug.WriteLine("OUTSIDE OF LOOP!");
+                    continue;
+                }
+
+                foreach(int q in primes)
+                {
+                    Debug.Write($"Primes: {q}, ");
+                }
+                Debug.WriteLine("");
+            }
+            return eratosthenes;
         }
 
         static void CallPrimeFactor()
@@ -28,7 +78,7 @@ namespace Exercise02
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            CallPrimeFactor();
         }
     }
 }
