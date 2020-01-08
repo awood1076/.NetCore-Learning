@@ -6,60 +6,73 @@ namespace Exercise02
 {
     class Program
     {
-        //come back to this; do sieve of eratosthenes https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-        static List<int> PrimeFactor(int userInput)
+        //sieve of eratosthenes https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+        static List<int> PrimeFactors(int userInput)
         {
-            //Create my array that will be userInput long, defaults to false.
-            bool[] eratosthenes = new bool[userInput];
-            Debug.WriteLine($"The array is: {eratosthenes.Length}"); //output to the debug
-            int j = 0;
+            List<int> notPrimes = new List<int>();
             List<int> primes = new List<int>();
-
-            for (int i = 0; i < eratosthenes.Length; i++)
-            {
-                eratosthenes[i] = true;
-            }
-
             Debug.WriteLine($"userInput = {userInput}");
 
             //Run this to run through all the non-primes. It runs through the below while y < userInput, then goes back up and starts over with x incremented by 1 until y = userInput, etc.
             for (int x = 2; x < userInput; x++)
             {
-                Debug.WriteLine($"x = {x}");
-                Debug.WriteLine($"y = x * 2");
-                for (int y = x * 2; y < userInput; y = y + x)
+                Debug.WriteLine($"x = {x} < userInput {userInput}");
+                for (int y = x * 2; y < userInput; y += x)
                 {
-                    Debug.WriteLine($"y = {y} + {x}");
-                    if (primes.Contains(y) == false)
+                    if (notPrimes.Contains(y) == false)
                     {
-                        primes.Add(y);
+                        notPrimes.Add(y);
                         Debug.WriteLine($"{y} added to list");
                     }
-                    Debug.WriteLine($"Now y will equal {y} + {x} or y + x");
+                    Debug.WriteLine($"y = {y} + {x}");
                 }
             }
             
             // scroll through the list and see what numbers are on there between 2 and user input; if it does exist on the list, it is NOT a prime.
             for (int i = 2; i < userInput; i++)
             {
-                if (primes.Contains(i) == false)
+                if (notPrimes.Contains(i) == false)
                 {
-                    Console.Write($"{i}, ");
+                    Debug.WriteLine($"{i} added to primes...\n");
+                    primes.Add(i);
                 }
             }
-            return primes;
+            List<int> primeFactorsUserInput = new List<int>();
+            for (int i = 0; i < primes.Count; i++)
+            {
+                do
+                {
+                    if (i * primes[i] == userInput)
+                    {
+                        primeFactorsUserInput.Add(primes[i]);
+                        Debug.WriteLine($"Added {i}");
+                        primeFactorsUserInput.Add(primes[j]);
+                        Debug.WriteLine($"Added {j}");
+                    }
+                    j++;
+                    Debug.WriteLine($"j++ j is now {j}...\n");
+                }
+                while (j < primes.Count);
+            }
+            return primeFactorsUserInput;
         }
 
-        static void CallPrimeFactor()
+        static void MultiplyPrimeFactor()
         {
              if (int.TryParse(Console.ReadLine(), out int userInput))
             {
-                PrimeFactor(userInput);
+                List<int> primes = PrimeFactors(userInput);
+                Console.WriteLine($"Prime factors of {userInput} are: ");
+                for(int i = 0; i < primes.Count; i++)
+                {
+                    Console.Write($"{primes[i]}, ");
+                }
             }
         }
+
         static void Main(string[] args)
         {
-            CallPrimeFactor();
+            MultiplyPrimeFactor();
         }
     }
 }
