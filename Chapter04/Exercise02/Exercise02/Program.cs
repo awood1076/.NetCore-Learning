@@ -37,23 +37,21 @@ namespace Exercise02
                     primes.Add(i);
                 }
             }
+
+            //scroll through the list and multiply i (starting at 2) by the prime number in the list; if it 
+            //TODO: Need to make sure i is also prime.
             List<int> primeFactorsUserInput = new List<int>();
-            for (int i = 0; i < primes.Count; i++)
+            for (int i = 2; i < primes.Count; i++)
             {
-                do
+                if (i * primes[i] == userInput)
                 {
-                    if (i * primes[i] == userInput)
-                    {
-                        primeFactorsUserInput.Add(primes[i]);
-                        Debug.WriteLine($"Added {i}");
-                        primeFactorsUserInput.Add(primes[j]);
-                        Debug.WriteLine($"Added {j}");
-                    }
-                    j++;
-                    Debug.WriteLine($"j++ j is now {j}...\n");
+                    primeFactorsUserInput.Add(primes[i]);
+                    Debug.WriteLine($"Added {i}\n");
                 }
-                while (j < primes.Count);
+                i++;
+                Debug.WriteLine($"i++ i is now {i}...\n");
             }
+            Debug.WriteLine($"primeFactorsUserInput = {primeFactorsUserInput}");
             return primeFactorsUserInput;
         }
 
