@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PacktLibrary", "PacktLibrary\PacktLibrary.csproj", "{BE80645B-23B5-45FC-B6E2-BC0B6D8FF216}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleApp", "PeopleApp\PeopleApp.csproj", "{D2AADAC4-E0BB-4A4C-8521-AFE637F4AA61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE80645B-23B5-45FC-B6E2-BC0B6D8FF216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE80645B-23B5-45FC-B6E2-BC0B6D8FF216}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE80645B-23B5-45FC-B6E2-BC0B6D8FF216}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE80645B-23B5-45FC-B6E2-BC0B6D8FF216}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2AADAC4-E0BB-4A4C-8521-AFE637F4AA61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2AADAC4-E0BB-4A4C-8521-AFE637F4AA61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2AADAC4-E0BB-4A4C-8521-AFE637F4AA61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2AADAC4-E0BB-4A4C-8521-AFE637F4AA61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {468A2EFB-F746-4700-9B55-A3E23FD47832}
+	EndGlobalSection
+EndGlobal
